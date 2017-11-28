@@ -12,8 +12,8 @@ class ProfilesController < ApplicationController
 
   def create
     @user = User.find(current_user)
-    @profile.user = @user
     @profile = Profile.new(profile_params)
+    @profile.user = @user
     if @profile.save
     redirect_to @profile
     else
@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:dose).permit(:first_name, :last_name, :address, :phone_number, :description, :photo, :photo_cache)
+    params.require(:profile).permit(:first_name, :last_name, :address, :phone_number, :description, :photo, :photo_cache)
   end
 
   def set_profile
