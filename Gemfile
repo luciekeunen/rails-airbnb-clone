@@ -18,6 +18,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'devise-bootstrapped'
 
+gem 'faker'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
