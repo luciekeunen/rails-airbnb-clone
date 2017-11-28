@@ -1,0 +1,11 @@
+<% EDITIONS = w%(Hardcover, Pocket, Paperback, Spiral-bound) %>
+<% QUALITIES = w%(Like new, Very good, Good, Acceptable, Bad) %>
+
+<%= simple_form_for @collection_item do |f| %>
+  <%= f.input :book_id %>
+  <%= f.input :price_per_day %>
+  <%= f.input :edition, collection: EDITIONS, as: :select %>
+  <%= f.input :quality, collection: QUALITIES, as: :select %>
+  <%= f.input :description %>
+  <%= f.button :submit %>
+<% end %>
