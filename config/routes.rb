@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :profiles, only: [ :show, :new, :create, :edit, :update ]
-  resources :collection_items, only: [ :index, :show ] do
+  resources :collection_items, only: [ :index, :show, :create, :new ] do
     resources :reviews, only: [ :new, :create ]
-    resources :reservations, only: [ :new, :create, :edit, :update]
+    resources :reservations, only: [ :new, :create, :edit, :update, :index]
     resources :messages, only: [ :index, :show, :new, :create]
   end
 
