@@ -1,2 +1,12 @@
-<h1>CollectionItems#index</h1>
-<p>Find me in app/views/collection_items/index.html.erb</p>
+<% @collection_items.each do |collection_item| %>
+  <p>Infos pour la card :</p>
+  <ul>
+    <li>Title : <%= collection_item.book.title %></li>
+    <li>Author : <%= collection_item.book.author %></li>
+    <li>Genre : <%= collection_item.book.genre %></li>
+    <li>Average rating : <%= collection_item.book.average_rating %></li>
+    <li>Owner (à remplacer par son avatar): <%= collection_item.profile.first_name %></li>
+    <li>Owner's address (not for display), but for map (?): <%= collection_item.profile.address %></li>
+    <li><%= link_to 'See book details', collection_item_path(collection_item) %></li>
+  </ul>
+<% end %>

@@ -1,2 +1,30 @@
-<h1>CollectionItems#show</h1>
-<p>Find me in app/views/collection_items/show.html.erb</p>
+<h2>About the book</h2>
+<ul>
+  <li>Title : <%= @collection_item.book.title %></li>
+  <li>Author : <%= @collection_item.book.author %></li>
+  <li>Genre : <%= @collection_item.book.genre %></li>
+  <li>Synopsis : <%= @collection_item.book.synopsis %></li>
+  <li>Average rating : <%= @collection_item.book.average_rating %></li>
+</ul>
+<p>Photo :</p>
+
+<h2>About the "collection-item"</h2>
+<ul>
+  <li>Edition : <%= @collection_item.edition %></li>
+  <li>Price per day (in cents) : <%= @collection_item.price_per_day %></li>
+  <li>Quality : <%= @collection_item.quality %></li>
+  <li>Description (=owner's opinion): <%= @collection_item.description %> </li>
+</ul>
+
+<h2>About the owner</h2>
+<ul>
+  <li>Owner : <%= @collection_item.profile.first_name %></li>
+</ul>
+<p>Photo:</p>
+
+
+
+<h6 style="color: red">Lorsqu'on aura le dashboard, enlever ces liens et ne les rendre disponibles que dans l'onglet "My books" (donc seulement sur les books du current user/profile) : </h6>
+<%= link_to "Edit", edit_collection_item_path(@collection_item) %>
+<br>
+<%= link_to "Delete", collection_item_path(@collection_item), method: :delete %>
