@@ -22,6 +22,10 @@ gem 'devise-bootstrapped'
 gem 'faker'
 gem 'omniauth-facebook'
 
+
+gem 'country_select'
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
