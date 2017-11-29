@@ -15,5 +15,6 @@
     <%= yield %>
     <%= yield(:after_js) %>
     <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
   </body>
 </html>

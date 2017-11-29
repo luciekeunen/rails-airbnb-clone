@@ -21,6 +21,7 @@ gem 'carrierwave', '~> 0.11.2'
 gem 'devise-bootstrapped'
 gem 'faker'
 gem 'country_select'
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
 group :development, :test do
   gem 'pry-byebug'
