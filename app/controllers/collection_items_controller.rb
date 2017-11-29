@@ -1,4 +1,5 @@
 class CollectionItemsController < ApplicationController
+
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
 
   def index
@@ -24,7 +25,13 @@ class CollectionItemsController < ApplicationController
     if Book.find_by(title: params["collection_item"]["title"])
       @book = Book.find_by(title: params["collection_item"]["title"])
     else
-      @book = Book.create(title: params["collection_item"]["title"])
+      @book = Book.create(
+        title: params["collection_item"]["title"],
+        synopsis: params["collection_item"]["synopsis"],
+        author: params["collection_item"]["author"],
+        photo: params["collection_item"]["photo"],
+        genre: params["collection_item"]["genre"]
+        )
     end
     @collection_item.book_id = @book.id
     user = current_user

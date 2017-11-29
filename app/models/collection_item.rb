@@ -5,5 +5,5 @@ class CollectionItem < ApplicationRecord
   has_many :messages
   has_many :reviews
 
-  attr_accessor :title
+  attr_accessor :title, :author, :synopsis, :photo, :genre
 end
