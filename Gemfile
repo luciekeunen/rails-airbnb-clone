@@ -16,8 +16,9 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'cloudinary'
+gem 'carrierwave', '~> 0.11.2'
 gem 'devise-bootstrapped'
-
 gem 'faker'
 
 group :development, :test do
