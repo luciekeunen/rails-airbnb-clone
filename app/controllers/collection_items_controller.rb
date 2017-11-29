@@ -14,7 +14,7 @@ class CollectionItemsController < ApplicationController
   def create
     @collection_item = CollectionItem.new(collection_item_params)
       if @collection_item.save
-        redirect_to .................
+        redirect_to collection_item_path(@collection_item)
       else
         render :new
       end
@@ -26,13 +26,13 @@ class CollectionItemsController < ApplicationController
 
   def update
     @collection_item = CollectionItem.update(collection_item_params)
-    redirect_to .................
+    redirect_to collection_item_path(@collection_item)
   end
 
   def destroy
     collection_item = CollectionItem.find(params[:id])
     collection_item.destroy
-    redirect_to ...............
+    redirect_to collection_items_path
   end
 
   private
