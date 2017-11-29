@@ -21,3 +21,7 @@
   <li>Owner : <%= @collection_item.profile.first_name %></li>
 </ul>
 <p>Photo:</p>
+
+<%= link_to "Edit", edit_collection_item_path(@collection_item) %>
+<br>
+<%= link_to "Delete", collection_item_path(@collection_item), method: :delete %>
