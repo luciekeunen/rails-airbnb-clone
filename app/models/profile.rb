@@ -6,6 +6,7 @@ class Profile < ApplicationRecord
 
   validates :first_name, presence: true
   validates :address, presence: true
+  validates :description, length: { maximum: 200 }
 
   mount_uploader :photo, PhotoUploader
 end
