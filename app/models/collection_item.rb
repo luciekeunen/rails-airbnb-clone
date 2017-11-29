@@ -4,4 +4,6 @@ class CollectionItem < ApplicationRecord
   has_many :reservations
   has_many :messages
   has_many :reviews
+
+  attr_accessor :title
 end

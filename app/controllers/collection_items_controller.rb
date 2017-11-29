@@ -13,11 +13,19 @@ class CollectionItemsController < ApplicationController
 
   def create
     @collection_item = CollectionItem.new(collection_item_params)
-      if @collection_item.save
-        redirect_to collection_item_path(@collection_item)
-      else
-        render :new
-      end
+    if Book.find_by(title: params["collection_item"]["title"])
+      @book = Book.find_by(title: params["collection_item"]["title"])
+    else
+      @book = Book.create(title: params["collection_item"]["title"])
+    end
+    @collection_item.book_id = @book.id
+    user = current_user
+    @collection_item.profile_id = user.profile.id
+    if @collection_item.save
+      redirect_to collection_item_path(@collection_item)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -38,6 +46,6 @@ class CollectionItemsController < ApplicationController
   private
 
   def collection_item_params
-    params.require(:collection_item).permit(:book_id, :description, :price_per_day, :edition, :quality)
+    params.require(:collection_item).permit(:description, :price_per_day, :edition, :quality, :title)
   end
 end

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'reservations/index_borrowed', to: 'reservations#index_borrowed'
   get 'reservations/index_lended', to: 'reservations#index_lended'
+
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

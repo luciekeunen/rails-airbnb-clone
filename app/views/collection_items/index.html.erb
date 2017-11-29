@@ -7,5 +7,6 @@
     <li>Average rating : <%= collection_item.book.average_rating %></li>
     <li>Owner (à remplacer par son avatar): <%= collection_item.profile.first_name %></li>
     <li>Owner's address (not for display), but for map (?): <%= collection_item.profile.address %></li>
+    <li><%= link_to 'See book details', collection_item_path(collection_item) %></li>
   </ul>
 <% end %>
