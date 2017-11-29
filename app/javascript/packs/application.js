@@ -1,3 +1,4 @@
+
 /* eslint no-console:0 */
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
@@ -10,5 +11,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
 import './google_maps_autocomplete';
 import './autocomplete';
