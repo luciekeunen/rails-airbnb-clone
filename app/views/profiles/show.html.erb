@@ -1,2 +1,50 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <div class="card profile">
+          <%= cl_image_tag @profile.photo, height: 300, width: 300, crop: :fill, alt: "Avatar", style: "width: 320px;"%>
+          <h3> <%= @profile.first_name %> </h3>
+          <p> <%= @profile.description %> </p>
+          <%= link_to edit_profile_path(@profile), id: "icon" do %>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-8">
+        <div class="content">
+          <p> <%= @profile.address %> Membre depuis <%= @profile.created_at %> </p>
+          <div class="separate"></div>
+          <h2>Commentaires</h2> <!-- @reviews.profile.length-->
+          <!-- @reviews.profile.each-->
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h2 class="text-center">Books</h2>
+      <div class="col-xs-3">
+        <div class="card my-book">
+          <%= image_tag "https://marketplace.canva.com/MACB5G7TBAg/2/0/thumbnail_large/canva-brown-building-business-book-cover-MACB5G7TBAg.jpg", height: 250, width: 250 %>
+          <p>Mon livre 1</p>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div class="card my-book">
+          <%= image_tag "https://marketplace.canva.com/MACB5G7TBAg/2/0/thumbnail_large/canva-brown-building-business-book-cover-MACB5G7TBAg.jpg", height: 250, width: 250 %>
+          <p>Mon livre 1</p>
+        </div>      </div>
+      <div class="col-xs-3">
+        <div class="card my-book">
+          <%= image_tag "https://marketplace.canva.com/MACB5G7TBAg/2/0/thumbnail_large/canva-brown-building-business-book-cover-MACB5G7TBAg.jpg", height: 250, width: 250 %>
+          <p>Mon livre 1</p>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div class="card my-book">
+          <%= image_tag "https://marketplace.canva.com/MACB5G7TBAg/2/0/thumbnail_large/canva-brown-building-business-book-cover-MACB5G7TBAg.jpg", height: 250, width: 250 %>
+          <p>Mon livre 1</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
