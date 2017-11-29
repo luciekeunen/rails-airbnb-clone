@@ -25,6 +25,7 @@ gem 'omniauth-facebook'
 
 gem 'country_select'
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
+gem "geocoder"
 
 group :development, :test do
   gem 'pry-byebug'
