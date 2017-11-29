@@ -1,12 +1,28 @@
-<% @collection_items.each do |collection_item| %>
-  <p>Infos pour la card :</p>
-  <ul>
-    <li>Title : <%= collection_item.book.title %></li>
-    <li>Author : <%= collection_item.book.author %></li>
-    <li>Genre : <%= collection_item.book.genre %></li>
-    <li>Average rating : <%= collection_item.book.average_rating %></li>
-    <li>Owner (à remplacer par son avatar): <%= collection_item.profile.first_name %></li>
-    <li>Owner's address (not for display), but for map (?): <%= collection_item.profile.address %></li>
-    <li><%= link_to 'See book details', collection_item_path(collection_item) %></li>
-  </ul>
-<% end %>
+<div class="main-container">
+  <div class="search-results">
+    <div class="container-fluid">
+      <div class="row">
+        <% @collection_items.each do |collection_item| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <%= link_to collection_item_path(collection_item) do %>
+              <div class="card card-small">
+                <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= image_default(collection_item.book, 'book.png')%>'); background-size: cover">
+                </div>
+                <div class="card-bottom">
+                  <p>Title : <%= collection_item.book.title %></p>
+                  <p>Author : <%= collection_item.book.author %></p>
+                  <p>Genre : <%= collection_item.book.genre %></p>
+                  <p>Average rating : <%= collection_item.book.average_rating %></p>
+                  <p>Owner (à remplacer par son avatar): <%= collection_item.profile.first_name %></p>
+                  <!-- <p>Owner's address (not for display), but for map (?): <%= collection_item.profile.address %></p> -->
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div id="map"></div>
+</div>
