@@ -11,3 +11,4 @@
 //= require bootstrap-sprockets
 //= require_tree .
 import './google_maps_autocomplete';
+import './autocomplete';
