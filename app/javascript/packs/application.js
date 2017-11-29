@@ -6,11 +6,9 @@
 //
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
-
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
-
 import './google_maps_autocomplete';
 import './autocomplete';
