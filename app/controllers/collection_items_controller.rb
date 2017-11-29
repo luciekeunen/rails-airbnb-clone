@@ -1,4 +1,6 @@
 class CollectionItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
+
   def index
     @collection_items = CollectionItem.all
   end
@@ -8,7 +10,13 @@ class CollectionItemsController < ApplicationController
   end
 
   def new
-    @collection_item = CollectionItem.new
+    user = User.find(current_user)
+    if user.profile
+      @collection_item = CollectionItem.new
+    else
+      flash[:alert] = 'To add a book, you need to fill your profile first'
+      redirect_to new_profile_path
+    end
   end
 
   def create
@@ -38,6 +46,7 @@ class CollectionItemsController < ApplicationController
   end
 
   def destroy
+    authenticate_user!
     collection_item = CollectionItem.find(params[:id])
     collection_item.destroy
     redirect_to collection_items_path
