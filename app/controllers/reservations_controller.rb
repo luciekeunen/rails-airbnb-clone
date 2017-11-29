@@ -5,7 +5,10 @@ class ReservationsController < ApplicationController
   def update
   end
 
-  def index
+  def index_borrowed
+  end
+
+  def index_lended
   end
 
   def show
