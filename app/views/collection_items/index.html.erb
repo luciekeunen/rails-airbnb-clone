@@ -11,7 +11,11 @@
             <div class="col-xs-12 col-sm-6 col-md-4">
               <%= link_to collection_item_path(collection_item) do %>
                 <div class="card card-small">
-                  <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= image_default(collection_item.book, 'book.png')%>'); background-size: cover">
+                  <% if @collection_item.book.photo && @collection_item.book.photo.length > 5 %>
+                    <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= image_path default_image %>'); background-size: cover">
+                  <% else %>
+                    <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= cl_image_tag @collection_item.book.photo %>'); background-size: cover">
+                  <% end %>
                   </div>
                   <div class="card-bottom">
                     <p>Title : <%= collection_item.book.title %></p>
