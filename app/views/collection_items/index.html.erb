@@ -4,19 +4,28 @@
       <div class="row">
         <% @collection_items.each do |collection_item| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
-            <%= link_to collection_item_path(collection_item) do %>
-              <div class="card card-small">
-                <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= image_default(collection_item.book, 'book.png')%>'); background-size: cover">
+
+            <% if collection_item && collection_item.book %>
+              <%= link_to collection_item_path(collection_item) do %>
+                <div class="card card-small">
+                  <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("<%= image_default(collection_item.book, 'book.png')%>"); background-size: cover">
+                  </div>
+                  <div class="card-bottom">
+                    <p>Title : <%= collection_item.book.title %></p>
+                    <p>Author : <%= collection_item.book.author %></p>
+                    <p>Genre : <%= collection_item.book.genre %></p>
+                    <p>Average rating : <%= collection_item.book.average_rating %></p>
+                    <p>Owner (à remplacer par son avatar): <%= collection_item.profile.first_name %></p>
+                    <!-- <p>Owner's address (not for display), but for map (?): <%= collection_item.profile.address %></p> -->
+                  </div>
                 </div>
-                <div class="card-bottom">
-                  <p>Title : <%= collection_item.book.title %></p>
-                  <p>Author : <%= collection_item.book.author %></p>
-                  <p>Genre : <%= collection_item.book.genre %></p>
-                  <p>Average rating : <%= collection_item.book.average_rating %></p>
-                  <p>Owner (à remplacer par son avatar): <%= collection_item.profile.first_name %></p>
-                  <!-- <p>Owner's address (not for display), but for map (?): <%= collection_item.profile.address %></p> -->
-                </div>
-              </div>
+              <% end %>
+
+            <% else %>
+
+            <% fail %>
+              <p>Pas de livre dans ta ville!</p>
+
             <% end %>
           </div>
         <% end %>
