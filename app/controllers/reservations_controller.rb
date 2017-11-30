@@ -28,10 +28,22 @@ class ReservationsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  # def edit
 
-  def update
+  # end
+
+  # def update
+  #   fail
+  # end
+
+  def accept
+    reservation = Reservation.find(params[:id])
+    if params[:accept] == "true"
+      reservation.update(status: "Accepted")
+    else
+      reservation.update(status: "Refused")
+    end
+    redirect_to dashboards_dashboard_main_path
   end
 
   def index_borrowed
