@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'dashboards/dashboard_main'
+
+  get 'dashboards/inbox'
+
+  get 'dashboards/my_books'
+
+  get 'dashboards/my_rentals'
+
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: "users/sessions", registrations: "users/registrations" }
   resources :profiles, only: [ :show, :new, :create, :edit, :update ]
