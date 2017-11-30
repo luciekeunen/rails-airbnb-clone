@@ -7,7 +7,6 @@
             <p>Pas de livre dans ta ville!</p>
           </div>
         <% else %>
-          <% fail %>
           <% @collection_items.each do |collection_item| %>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <%= link_to collection_item_path(collection_item) do %>
