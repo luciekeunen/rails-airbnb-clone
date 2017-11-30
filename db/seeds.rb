@@ -12,8 +12,17 @@ end
 
 10.times do
   user = User.create!(email: Faker::Internet.email, password: "123456")
-  Profile.create!(user_id: user.id, first_name: Faker::Superhero.name, last_name: Faker::Superhero.suffix, description: Faker::Superhero.descriptor, address:
-Faker::Address.street_address, zip_code: Faker::Address.zip_code, city: Faker::Address.city, country_code: Faker::Address.country_code, phone_number: Faker::PhoneNumber.phone_number)
+  Profile.create!(
+    user_id: user.id,
+    first_name: Faker::Superhero.name,
+    last_name: Faker::Superhero.suffix,
+    description: Faker::Superhero.descriptor,
+    address: Faker::Address.street_address,
+    zip_code: Faker::Address.zip_code,
+    city: Faker::Address.city,
+    country_code: Faker::Address.country_code,
+    phone_number: Faker::PhoneNumber.phone_number
+  )
 end
 
 20.times do
