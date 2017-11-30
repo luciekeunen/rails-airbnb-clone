@@ -8,6 +8,8 @@ class CollectionItemsController < ApplicationController
 
   def show
     @collection_item = CollectionItem.find(params[:id])
+
+    @reservation = Reservation.new
   end
 
   def new
