@@ -29,7 +29,7 @@ const drawResponseList = (data) => {
 };
 
 const autocomplete = (e) => {
-  fetch(`https://www.googleapis.com/books/v1/volumes?q=${event.currentTarget.value}&key=AIzaSyAGQKmautQgH4wZzj4VMuK02y3okJK_vyE`)
+  fetch(`https://www.googleapis.com/books/v1/volumes?q=${event.currentTarget.value}&key=${ENV['GOOGLE_API_SERVER_KEY']}`)
     .then(response => response.json())
     .then(data => drawResponseList(data));
 };
