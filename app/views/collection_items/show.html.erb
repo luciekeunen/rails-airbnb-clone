@@ -22,7 +22,11 @@
 </ul>
 <p>Photo:</p>
 
-
+<%= simple_form_for [@collection_item, @reservation] do |f| %>
+  <%= f.input :start_day %>
+  <%= f.input :end_day %>
+  <%= f.button :submit %>
+<% end %>
 
 <h6 style="color: red">Lorsqu'on aura le dashboard, enlever ces liens et ne les rendre disponibles que dans l'onglet "My books" (donc seulement sur les books du current user/profile) : </h6>
 <%= link_to "Edit", edit_collection_item_path(@collection_item) %>
