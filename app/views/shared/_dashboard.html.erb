@@ -10,14 +10,15 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "See books", collection_items_path , class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "My rentals", reservations_index_borrowed_path , class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Add a book", new_collection_item_path , class: "navbar-wagon-item navbar-wagon-link" %>
-
+      <%= link_to "Dashboard", pages_dashboard_path , class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Inbox", "#" , class: "navbar-wagon-item navbar-wagon-link" %> <!-- collection_item_messages_path / a rajouter quand les message fonction -->
+      <%= link_to "My Books", new_collection_item_path(current_user) , class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "My Rentals", "#", class: "navbar-wagon-item navbar-wagon-link" %> <!-- Il faudra peut etre un liste des reservation (a ajouter dans les routes )
+ -->
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <% avatar_url = current_user.facebook_picture_url || "https://placehold.it/30x30" %>
+          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
           <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
