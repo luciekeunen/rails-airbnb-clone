@@ -14,6 +14,8 @@ class CollectionItemsController < ApplicationController
 
   def show
     @collection_item = CollectionItem.find(params[:id])
+
+    @reservation = Reservation.new
   end
 
   def new
@@ -43,7 +45,7 @@ class CollectionItemsController < ApplicationController
     user = current_user
     @collection_item.profile_id = user.profile.id
     if @collection_item.save
-      redirect_to collection_item_path(@collection_item)
+      redirect_to dashboards_my_books_path
     else
       render :new
     end
