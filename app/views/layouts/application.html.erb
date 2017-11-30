@@ -10,11 +10,12 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
-  <% if content_for? :dashboard %>
-  <%= content_for :dashboard %>
-  <% else %>
-  <%= render '/shared/navbar' %>
-  <% end %>
+    <% if content_for? :dashboard %>
+      <%= content_for :dashboard %>
+    <% else %>
+      <%= render '/shared/navbar' %>
+    <% end %>
+
     <%= render '/shared/flashes' %>
     <%= yield %>
     <!-- This three lines below are used to the display the map -->
