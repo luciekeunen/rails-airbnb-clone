@@ -28,6 +28,14 @@
   <%= f.button :submit %>
 <% end %>
 
+
+<h3>Reviews</h3>
+<% @collection_item.reviews.each do |review| %>
+  <ul>
+    <li><%= review.content %> - <%= review.rating %></li>
+  </ul>
+<% end %>
+
 <h6 style="color: red">Lorsqu'on aura le dashboard, enlever ces liens et ne les rendre disponibles que dans l'onglet "My books" (donc seulement sur les books du current user/profile) : </h6>
 <%= link_to "Edit", edit_collection_item_path(@collection_item) %>
 <br>
