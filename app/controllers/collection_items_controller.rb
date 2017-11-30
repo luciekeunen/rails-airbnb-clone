@@ -32,11 +32,13 @@ class CollectionItemsController < ApplicationController
     if Book.find_by(title: params["collection_item"]["title"])
       @book = Book.find_by(title: params["collection_item"]["title"])
     else
+      picture = Cloudinary::Uploader.upload("#{params["collection_item"]["photo"]}",
+      :public_id => "#{params["collection_item"]["title"].chars[0..10].shuffle}")
       @book = Book.create(
         title: params["collection_item"]["title"],
         synopsis: params["collection_item"]["synopsis"],
         author: params["collection_item"]["author"],
-        photo: params["collection_item"]["photo"],
+        photo: picture["url"],
         genre: params["collection_item"]["genre"]
         )
     end

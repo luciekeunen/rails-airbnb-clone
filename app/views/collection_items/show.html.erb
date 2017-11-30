@@ -2,7 +2,7 @@
   <header id="ze_book">
     <div class="book">
     <% if @collection_item.book.photo && @collection_item.book.photo.length > 5 %>
-      <%= image_tag @collection_item.book.photo, class: "hoverZoomLink"%>
+      <%= cl_image_tag @collection_item.book.photo, class: "hoverZoomLink"%>
     <% else %>
       <%= image_tag "https://images.unsplash.com/photo-1502979932800-33d311b7ce56?auto=format&fit=crop&w=1650&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D", class: "hoverZoomLink"%>
     <% end %>
