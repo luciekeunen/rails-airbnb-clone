@@ -2,6 +2,11 @@
 
 <div class="container">
   <div class="row">
+    <div class="col-xs-12">
+      <h1>My books</h1>
+    </div>
+  </div>
+  <div class="row">
     <% @collection_items.each do |collection_item| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
         <%= render 'shared/collection_item_card', collection_item: collection_item %>
