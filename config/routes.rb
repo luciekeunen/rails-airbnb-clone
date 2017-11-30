@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'conversations/index'
+
+  get 'conversations/show'
+
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: "users/sessions", registrations: "users/registrations" }
   resources :profiles, only: [ :show, :new, :create, :edit, :update ]
@@ -7,6 +11,14 @@ Rails.application.routes.draw do
     resources :reviews, only: [ :new, :create ]
     resources :reservations, only: [ :new, :create, :edit, :update]
     resources :messages, only: [ :index, :show, :new, :create]
+  end
+
+  resources :conversations do
+    resources :messages
+  end
+
+  resources :posts do
+    resources :conversations, only: [:new, :create]
   end
 
   get 'reservations/index_borrowed', to: 'reservations#index_borrowed'
