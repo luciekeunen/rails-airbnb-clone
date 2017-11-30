@@ -1,7 +1,11 @@
 <% content_for :dashboard, render('shared/dashboard_navbar') %>
 
-
-
-
-<h1>Dashboards#my_books</h1>
-<p>Find me in app/views/dashboards/my_books.html.erb</p>
+<div class="container">
+  <div class="row">
+    <% @collection_items.each do |collection_item| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render 'shared/collection_item_card', collection_item: collection_item %>
+      </div>
+    <% end %>
+  </div>
+</div>
