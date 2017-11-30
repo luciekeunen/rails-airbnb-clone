@@ -22,7 +22,7 @@
       <div class="message-status">
         <% if reservation.status == "pending" %>
           <%= link_to "Accept", reservation_accept_path(reservation, "true"), class: "btn btn-success" %>
-          <%= link_to "Refuse", reservation_accept_path(reservation, "false"), class: "btn btn-danger" %>
+          <%= link_to "Decline", reservation_accept_path(reservation, "false"), class: "btn btn-danger" %>
         <% elsif reservation.status == "accepted" %>
           <p class="status accepted">Accepted</p>
         <% else %>
