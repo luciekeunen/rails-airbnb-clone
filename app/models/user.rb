@@ -29,10 +29,11 @@ class User < ApplicationRecord
   end
 
   def name
-    current_user.name
+    "User #{email}"
   end
 
   def mailboxer_email(object)
     nil
   end
+
 end

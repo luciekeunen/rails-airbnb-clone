@@ -26,6 +26,13 @@ gem 'mailboxer'
 
 gem 'country_select'
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
+gem "geocoder"
+gem "coffee-rails"
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 group :development, :test do
   gem 'pry-byebug'

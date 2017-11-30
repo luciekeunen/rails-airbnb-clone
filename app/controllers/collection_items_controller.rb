@@ -1,12 +1,21 @@
 class CollectionItemsController < ApplicationController
+
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
 
   def index
-    @collection_items = CollectionItem.all
+    @profiles = Profile.near(params[:city], 10)
+    @markers = Gmaps4rails.build_markers(@profiles) do |profile, marker|
+      marker.lat profile.latitude
+      marker.lng profile.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
+    @collection_items = @profiles.map { |p| p.collection_items }.flatten
   end
 
   def show
     @collection_item = CollectionItem.find(params[:id])
+
+    @reservation = Reservation.new
   end
 
   def new
@@ -24,13 +33,19 @@ class CollectionItemsController < ApplicationController
     if Book.find_by(title: params["collection_item"]["title"])
       @book = Book.find_by(title: params["collection_item"]["title"])
     else
-      @book = Book.create(title: params["collection_item"]["title"])
+      @book = Book.create(
+        title: params["collection_item"]["title"],
+        synopsis: params["collection_item"]["synopsis"],
+        author: params["collection_item"]["author"],
+        photo: params["collection_item"]["photo"],
+        genre: params["collection_item"]["genre"]
+        )
     end
     @collection_item.book_id = @book.id
     user = current_user
     @collection_item.profile_id = user.profile.id
     if @collection_item.save
-      redirect_to collection_item_path(@collection_item)
+      redirect_to dashboards_my_books_path
     else
       render :new
     end

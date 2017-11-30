@@ -116,6 +116,8 @@ ActiveRecord::Schema.define(version: 20171130122440) do
     t.string   "city"
     t.string   "country_code"
     t.string   "zip_code"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 

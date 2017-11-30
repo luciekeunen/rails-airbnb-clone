@@ -6,7 +6,7 @@
   <li>Synopsis : <%= @collection_item.book.synopsis %></li>
   <li>Average rating : <%= @collection_item.book.average_rating %></li>
 </ul>
-<p>Photo :</p>
+<p>Photo : <%= image_tag @collection_item.book.photo %></p>
 
 <h2>About the "collection-item"</h2>
 <ul>
@@ -22,7 +22,19 @@
 </ul>
 <p>Photo:</p>
 
+<%= simple_form_for [@collection_item, @reservation] do |f| %>
+  <%= f.input :start_day %>
+  <%= f.input :end_day %>
+  <%= f.button :submit %>
+<% end %>
 
+
+<h3>Reviews</h3>
+<% @collection_item.reviews.each do |review| %>
+  <ul>
+    <li><%= review.content %> - <%= review.rating %></li>
+  </ul>
+<% end %>
 
 <h6 style="color: red">Lorsqu'on aura le dashboard, enlever ces liens et ne les rendre disponibles que dans l'onglet "My books" (donc seulement sur les books du current user/profile) : </h6>
 <%= link_to "Edit", edit_collection_item_path(@collection_item) %>

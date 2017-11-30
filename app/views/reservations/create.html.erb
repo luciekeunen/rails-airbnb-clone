@@ -1,2 +1,49 @@
-<h1>Reservations#create</h1>
-<p>Find me in app/views/reservations/create.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Congrats, you rent a book!</h2>
+    </div>
+  </div>
+
+  <div class="row">
+
+
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <%= render 'shared/collection_item_card', collection_item: @reservation.collection_item %>
+    </div>
+
+
+
+
+
+<!--     <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="card card-small">
+        <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= image_default(@reservation.collection_item.book, 'book.png')%>'); background-size: cover">
+        </div>
+        <div class="card-bottom">
+          <p>Title : <%= @reservation.collection_item.book.title %></p>
+          <p>Author : <%= @reservation.collection_item.book.author %></p>
+          <p>Genre : <%= @reservation.collection_item.book.genre %></p>
+          <p>Average rating : <%= @reservation.collection_item.book.average_rating %></p>
+          <%= link_to "Add a review", new_collection_item_review_path %>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div id="reservation-recap">
+        <h3>Reservation's recap :</h3>
+        <p>Status : <%= @reservation.status %>. The owner of the book has to confirm your reservation first :) </p>
+        <p>Price : <%= @reservation.final_price %></p>
+        <p>Rented from <%= @reservation.start_day %> to <%= @reservation.end_day %></p>
+        <p>Owner : <%= @reservation.collection_item.profile.first_name %></p>
+        <%= link_to "Go to my reservations", reservations_index_borrowed_path %>
+        <%= link_to "Add a review", new_collection_item_review_path %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

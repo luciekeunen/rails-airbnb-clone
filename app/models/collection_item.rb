@@ -5,5 +5,7 @@ class CollectionItem < ApplicationRecord
   has_many :messages
   has_many :reviews
 
-  attr_accessor :title
+  validates :price_per_day, presence: :true, numericality: { only_integer: true }
+
+  attr_accessor :title, :author, :synopsis, :photo, :genre
 end
