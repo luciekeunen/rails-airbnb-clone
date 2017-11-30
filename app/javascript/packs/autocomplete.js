@@ -2,7 +2,7 @@
 
 // https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyARQs4JmuMEWqPwkejlRf5Ir9SAwRR5mgM
 // TODO: Autocomplete the input with AJAX calls.
-const input = document.querySelector('#collection_item_title');
+const input = document.querySelector('#collection_item_fake_title');
 
 const drawResponseList = (data) => {
   console.log(data)
@@ -19,6 +19,7 @@ const drawResponseList = (data) => {
     document.querySelector(`#result${result_id}`).addEventListener('click', (event) => {
       results.innerHTML = "";
       input.value = `Title : ${item.volumeInfo.title} - Author(s) : ${item.volumeInfo.authors.join(" - ")}`
+      document.querySelector('#collection_item_title').value = item.volumeInfo.title;
       document.querySelector('#collection_item_synopsis').value = item.searchInfo.textSnippet;
       document.querySelector('#collection_item_author').value = item.volumeInfo.authors.join(" - ");
       document.querySelector('#collection_item_photo').value = item.volumeInfo.imageLinks.smallThumbnail;
