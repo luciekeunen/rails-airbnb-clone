@@ -9,7 +9,7 @@ class CollectionItemsController < ApplicationController
       marker.lng profile.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
-    @collection_items = @profiles.map { |p| p.collection_items }.flatten
+    @collection_items = @profiles.map { |profile| profile.collection_items }.flatten
   end
 
   def show
