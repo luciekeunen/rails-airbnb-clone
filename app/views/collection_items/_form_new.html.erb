@@ -2,7 +2,8 @@
 <% qualities = ["Like new", "Very good", "Good", "Acceptable", "Bad"] %>
 
 <%= simple_form_for @collection_item do |f| %>
-  <%= f.input :title %>
+  <%= f.input :fake_title, label: "Title" %>
+  <%= f.input :title, :as => :hidden %>
   <%= f.input :synopsis, :as => :hidden %>
   <%= f.input :author, :as => :hidden %>
   <%= f.input :photo, :as => :hidden %>
