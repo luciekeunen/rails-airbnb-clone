@@ -15,6 +15,7 @@
           <p>Author : <%= @reservation.collection_item.book.author %></p>
           <p>Genre : <%= @reservation.collection_item.book.genre %></p>
           <p>Average rating : <%= @reservation.collection_item.book.average_rating %></p>
+          <%= link_to "Add a review", new_collection_item_review_path %>
         </div>
       </div>
     </div>

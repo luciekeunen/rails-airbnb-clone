@@ -52,6 +52,7 @@ class ReservationsController < ApplicationController
   end
 
   def calculate_final_price(start_day, end_day, price_per_day)
+    price_per_day = 0 if price_per_day.nil?
     days = end_day - start_day
     final_price = days * price_per_day
   end
