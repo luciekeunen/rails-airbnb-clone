@@ -27,7 +27,7 @@ end
 
 20.times do
   collection_item = CollectionItem.new(price_per_day: 50)
-  collection_item.book_id = (1..20).to_a.sample
-  collection_item.profile_id = (1..10).to_a.sample
+  collection_item.book = Book.all.sample
+  collection_item.profile = Profile.all.sample
   collection_item.save!
 end
