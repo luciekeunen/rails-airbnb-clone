@@ -20,5 +20,5 @@
 </div>
 
 <%= content_for(:after_js) do %>
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAGQKmautQgH4wZzj4VMuK02y3okJK_vyE"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=#{ENV['GOOGLE_API_SERVER_KEY']}"></script>
 <% end %>
