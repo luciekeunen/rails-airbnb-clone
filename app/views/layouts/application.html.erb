@@ -18,7 +18,7 @@
     <%= render '/shared/flashes' %>
     <%= yield %>
     <!-- This three lines below are used to the display the map -->
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&amp;key="+ENV['GOOGLE_API_SERVER_KEY']%>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=#{ENV['GOOGLE_API_SERVER_KEY']}"%>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
 
