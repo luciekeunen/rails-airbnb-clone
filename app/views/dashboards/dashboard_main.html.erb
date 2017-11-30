@@ -3,3 +3,17 @@
 <button id="All_reservations" type="button" class="btn btn-default">View all reservations</button>
 <button id="Add_book" type="button" class="btn btn-default">Add a book</button>
 <h2>Pending request</h2>
+<% @reservations.each do |reservation| %>
+  <p><%= reservation.collection_item.book.title %></p>
+  <p>From <%= reservation.start_day %> to <%= reservation.end_day %></p>
+  <p>Rented by <%= reservation.profile.first_name %></p>
+  <p>Reserv_id <%= reservation.id %></p>
+  <% if reservation.status == "pending" %>
+    <%= link_to "Accept", reservation_accept_path(reservation, "true") %>
+    <%= link_to "Refuse", reservation_accept_path(reservation, "false") %>
+  <% elsif reservation.status == "accepted" %>
+    <p>Accepted!</p>
+  <% else %>
+    <p>Refused!</p>
+  <% end %>
+<% end %>
