@@ -1,0 +1,11 @@
+<div class="card card-small">
+  <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= image_default(@reservation.collection_item.book, 'book.png')%>'); background-size: cover">
+  </div>
+  <div class="card-bottom">
+    <p>Title : <%= @reservation.collection_item.book.title %></p>
+    <p>Author : <%= @reservation.collection_item.book.author %></p>
+    <p>Genre : <%= @reservation.collection_item.book.genre %></p>
+    <p>Average rating : <%= @reservation.collection_item.book.average_rating %></p>
+    <%= link_to "Add a review", new_collection_item_review_path %>
+  </div>
+</div>
