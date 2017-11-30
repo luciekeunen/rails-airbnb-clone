@@ -1,3 +1,11 @@
+Reservation.destroy_all
+Message.destroy_all
+Review.destroy_all
+CollectionItem.destroy_all
+Book.destroy_all
+Profile.destroy_all
+User.destroy_all
+
 20.times do
   Book.create!(title: Faker::Book.title, author: Faker::Book.author, genre: Faker::Book.genre)
 end
