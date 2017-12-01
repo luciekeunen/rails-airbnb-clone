@@ -10,8 +10,10 @@ User.destroy_all
 
 puts "Creating books..."
 
+PHOTO = ["book1","book2","book3","book4","book5","book6","book7","book8","book9","book10","book11"]
+
 20.times do
-  Book.create!(title: Faker::Book.title, author: Faker::Book.author, genre: Faker::Book.genre)
+  Book.create!(title: Faker::Book.title, author: Faker::Book.author, genre: Faker::Book.genre, photo: PHOTO.sample)
 end
 
 puts "Creating users and their profile..."
