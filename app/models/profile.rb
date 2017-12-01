@@ -3,6 +3,7 @@ class Profile < ApplicationRecord
   has_many :reviews
   has_many :collection_items, dependent: :destroy
   has_many :messages
+  has_many :reservations
 
   validates :first_name, presence: true
   validates :address, presence: true

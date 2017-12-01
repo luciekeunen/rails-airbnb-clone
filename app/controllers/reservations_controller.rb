@@ -12,19 +12,15 @@ class ReservationsController < ApplicationController
       @reservation.collection_item_id = params["collection_item_id"]
       price_per_day = CollectionItem.find(params["collection_item_id"]).price_per_day
       @reservation.final_price = calculate_final_price(@reservation.start_day, @reservation.end_day, price_per_day)
-      return @reservation
+      unless @reservation.save
+        redirect_to collection_item_path(params[:collection_item_id])
+      end
     else
       # Return is necessary for the redirect_to to work
       # Indeed, the redirection doesn't work if it isn't the last instruction of the controller method
       flash[:alert] = 'To rent a book, you need to fill your profile first'
       redirect_to new_profile_path
       return
-    end
-
-    if @reservation.save
-      redirect_to reservations_index_borrowed_path
-    else
-      redirect_to collection_item_path(params[:collection_item_id])
     end
   end
 
