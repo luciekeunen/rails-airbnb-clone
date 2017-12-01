@@ -9,12 +9,11 @@ class CollectionItemsController < ApplicationController
       marker.lng profile.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
-    @collection_items = @profiles.map { |p| p.collection_items }.flatten
+    @collection_items = @profiles.map { |profile| profile.collection_items }.flatten
   end
 
   def show
     @collection_item = CollectionItem.find(params[:id])
-
     @reservation = Reservation.new
   end
 
@@ -33,11 +32,13 @@ class CollectionItemsController < ApplicationController
     if Book.find_by(title: params["collection_item"]["title"])
       @book = Book.find_by(title: params["collection_item"]["title"])
     else
+      picture = Cloudinary::Uploader.upload("#{params["collection_item"]["photo"]}",
+      :public_id => "#{params["collection_item"]["title"].chars[0..10].shuffle.delete(" ")}")
       @book = Book.create(
         title: params["collection_item"]["title"],
         synopsis: params["collection_item"]["synopsis"],
         author: params["collection_item"]["author"],
-        photo: params["collection_item"]["photo"],
+        photo: picture["url"],
         genre: params["collection_item"]["genre"]
         )
     end

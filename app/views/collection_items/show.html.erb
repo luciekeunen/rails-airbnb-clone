@@ -1,42 +1,57 @@
-<h2>About the book</h2>
-<ul>
-  <li>Title : <%= @collection_item.book.title %></li>
-  <li>Author : <%= @collection_item.book.author %></li>
-  <li>Genre : <%= @collection_item.book.genre %></li>
-  <li>Synopsis : <%= @collection_item.book.synopsis %></li>
-  <li>Average rating : <%= @collection_item.book.average_rating %></li>
-</ul>
-<p>Photo : <%= image_tag @collection_item.book.photo %></p>
+<div class="profile-card-show">
+  <header id="ze_book">
+    <div class="book">
+    <% if @collection_item.book.photo && @collection_item.book.photo.length > 5 %>
+      <%= cl_image_tag @collection_item.book.photo, class: "hoverZoomLink"%>
+    <% else %>
+      <%= image_tag "https://images.unsplash.com/photo-1502979932800-33d311b7ce56?auto=format&fit=crop&w=1650&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D", class: "hoverZoomLink"%>
+    <% end %>
+  <h4><%= @collection_item.book.title %></h4>
+  </div>
+  <div class="owner">
+    <%= link_to @collection_item.profile do %>
+      <ul class="list-inline">
+      <li>Owner : </li>
+      <% if @collection_item.profile.photo %>
+        <li><%= cl_image_tag @collection_item.profile.photo, class: "owner_picture" %></li>
+      <% end %>
+      <li><%= @collection_item.profile.first_name %></li>
+      <li><%= @collection_item.profile.last_name %></li>
+      </ul>
+    <% end %>
+  </div>
+  </header>
+  <div class="profile-bio">
+    <% if @collection_item.book.synopsis && @collection_item.book.synopsis.length > 5 %>
+      <h3 id="latest">Synopsis</h3>
+      <p><%= @collection_item.book.synopsis %></p>
+    <% end %>
+    <h3 id="latest">Latest reviews</h3>
+    <ul class="list-inline">
+      <% @collection_item.reviews.each do |review| %>
+        <li style="margin: 10px">
+          <%= review.content %>
+          <% review.rating.to_i.times do %>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
+          <% (5 - review.rating.to_i).times do %>
+          <i class="fa fa-star" style="color: lightgray" aria-hidden="true"></i>
+          <% end %>
+          </li>
+        <br>
+      <% end %>
+    </ul>
+  <div class="add">
+    <%= link_to "Add a review", new_collection_item_review_path(@collection_item), class: "btn btn-primary" %>
+  </div>
+  <div class="date">
+     <%= simple_form_for [@collection_item, @reservation] do |f| %>
+       <p>Start <%= f.date_field :start_day, label: "Start" %></p>
+       <p>End <%= f.date_field :end_day, label: "End" %></p>
+     <%= f.button :submit %>
+  </div>
+  </div>
+  <% end %>
 
-<h2>About the "collection-item"</h2>
-<ul>
-  <li>Edition : <%= @collection_item.edition %></li>
-  <li>Price per day (in cents) : <%= @collection_item.price_per_day %></li>
-  <li>Quality : <%= @collection_item.quality %></li>
-  <li>Description (=owner's opinion): <%= @collection_item.description %> </li>
-</ul>
-
-<h2>About the owner</h2>
-<ul>
-  <li>Owner : <%= @collection_item.profile.first_name %></li>
-</ul>
-<p>Photo:</p>
-
-<%= simple_form_for [@collection_item, @reservation] do |f| %>
-  <%= f.input :start_day %>
-  <%= f.input :end_day %>
-  <%= f.button :submit %>
-<% end %>
-
-
-<h3>Reviews</h3>
-<% @collection_item.reviews.each do |review| %>
-  <ul>
-    <li><%= review.content %> - <%= review.rating %></li>
-  </ul>
-<% end %>
-
-<h6 style="color: red">Lorsqu'on aura le dashboard, enlever ces liens et ne les rendre disponibles que dans l'onglet "My books" (donc seulement sur les books du current user/profile) : </h6>
-<%= link_to "Edit", edit_collection_item_path(@collection_item) %>
-<br>
-<%= link_to "Delete", collection_item_path(@collection_item), method: :delete %>
+  <!-- some social links to show off -->
+</div>

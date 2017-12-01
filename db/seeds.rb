@@ -31,3 +31,10 @@ end
   collection_item.profile = Profile.all.sample
   collection_item.save!
 end
+
+10.times do
+  reservation = Reservation.new(status: "pending", start_day: Date.today, end_day: Date.tomorrow, final_price: 5)
+  reservation.profile = Profile.all.sample
+  reservation.collection_item = CollectionItem.all.sample
+  reservation.save!
+end
