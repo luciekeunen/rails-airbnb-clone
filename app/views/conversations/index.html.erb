@@ -1,0 +1,29 @@
+<% content_for :dashboard, render('shared/dashboard_navbar') %>
+
+<h1 id="messages">Vos messages</h1>
+
+
+<%=link_to "New Conversations", new_conversation_path %>
+
+ <!-- Cette methode est pour les annonces -->
+
+<div class="container">
+<% @conversations.each do |conversation| %>
+<div class="message">
+  <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+  <div class="message-name">
+    <h3><%= current_user.email %></h3>
+    <p>10/07/17</p>
+  </div>
+  <div class="message-body">
+    <p><strong><%= link_to conversation.subject, conversation_path(conversation) %></strong></p>
+    <p>
+      I am not sure yet! I might be in Shanghai at this moment... Can I tell you later?
+    </p>
+  </div>
+  <div class="message-status">
+    <p class="status pending">Pending</p>
+  </div>
+</div>
+<% end %>
+</div>

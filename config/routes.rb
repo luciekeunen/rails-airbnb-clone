@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
 
+  get 'conversations/index'
+
+  get 'conversations/show'
+
+  get 'dashboards/dashboard_main'
+
+  get 'dashboards/inbox'
+
+
 
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: "users/sessions", registrations: "users/registrations" }
@@ -9,6 +18,14 @@ Rails.application.routes.draw do
     resources :reviews, only: [ :new, :create ]
     resources :reservations, only: [ :create ]
     resources :messages, only: [ :index, :show, :new, :create ]
+  end
+
+  resources :conversations do
+    resources :messages
+  end
+
+  resources :posts do
+    resources :conversations
   end
 
   get 'reservations/:id/:accept', to: 'reservations#accept', as: 'reservation_accept'
