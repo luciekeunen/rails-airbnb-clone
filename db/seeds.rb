@@ -16,24 +16,107 @@ end
 
 puts "Creating users and their profile..."
 
-user_count = 0
+# user_count = 0
 
-10.times do
-  user_count += 1
-  email = "user#{user_count}@gmail.com"
+# 10.times do
+#   user_count += 1
+#   email = "user#{user_count}@gmail.com"
+#   user = User.create!(email: email , password: "123456")
+#   Profile.create!(
+#     user_id: user.id,
+#     first_name: Faker::Superhero.name,
+#     last_name: Faker::Superhero.suffix,
+#     description: Faker::Superhero.descriptor,
+#     address: Faker::Address.street_address,
+#     zip_code: Faker::Address.zip_code,
+#     city: Faker::Address.city,
+#     country_code: Faker::Address.country_code,
+#     phone_number: Faker::PhoneNumber.phone_number
+#   )
+# end
+
+
+puts "With real addresses..."
+
+puts "1"
+  email = "user1@gmail.com"
   user = User.create!(email: email , password: "123456")
   Profile.create!(
     user_id: user.id,
     first_name: Faker::Superhero.name,
     last_name: Faker::Superhero.suffix,
     description: Faker::Superhero.descriptor,
-    address: Faker::Address.street_address,
-    zip_code: Faker::Address.zip_code,
-    city: Faker::Address.city,
-    country_code: Faker::Address.country_code,
+    address: "Rue de Rivoli",
+    # zip_code: Faker::Address.zip_code,
+    city: "Paris",
+    # country_code: Faker::Address.country_code,
     phone_number: Faker::PhoneNumber.phone_number
   )
-end
+
+
+puts "2"
+  email = "user2@gmail.com"
+  user = User.create!(email: email , password: "123456")
+  Profile.create!(
+    user_id: user.id,
+    first_name: Faker::Superhero.name,
+    last_name: Faker::Superhero.suffix,
+    description: Faker::Superhero.descriptor,
+    address: "Rue Nationale",
+    # zip_code: Faker::Address.zip_code,
+    city: "Lille",
+    # country_code: Faker::Address.country_code,
+    phone_number: Faker::PhoneNumber.phone_number
+  )
+
+
+puts "3"
+  email = "user3@gmail.com"
+  user = User.create!(email: email , password: "123456")
+  Profile.create!(
+    user_id: user.id,
+    first_name: Faker::Superhero.name,
+    last_name: Faker::Superhero.suffix,
+    description: Faker::Superhero.descriptor,
+    address: "Rue Solférino",
+    # zip_code: Faker::Address.zip_code,
+    city: "Lille",
+    # country_code: Faker::Address.country_code,
+    phone_number: Faker::PhoneNumber.phone_number
+  )
+
+
+puts "4"
+  email = "user4@gmail.com"
+  user = User.create!(email: email , password: "123456")
+  Profile.create!(
+    user_id: user.id,
+    first_name: Faker::Superhero.name,
+    last_name: Faker::Superhero.suffix,
+    description: Faker::Superhero.descriptor,
+    address: "Rue Léon Gambetta",
+    # zip_code: Faker::Address.zip_code,
+    city: "Lille",
+    # country_code: Faker::Address.country_code,
+    phone_number: Faker::PhoneNumber.phone_number
+  )
+
+
+puts "5"
+  email = "user5@gmail.com"
+  user = User.create!(email: email , password: "123456")
+  Profile.create!(
+    user_id: user.id,
+    first_name: Faker::Superhero.name,
+    last_name: Faker::Superhero.suffix,
+    description: Faker::Superhero.descriptor,
+    address: "Rue Esquermoise",
+    zip_code: 59800,
+    city: "Lille",
+    # country_code: Faker::Address.country_code,
+    phone_number: Faker::PhoneNumber.phone_number
+  )
+
 
 puts "Creating collection_item with 2 reservations each..."
 

@@ -4,4 +4,5 @@ class ApplicationController < ActionController::Base
   def check_profil
     redirect_to new_user_registration_path
   end
+
 end
