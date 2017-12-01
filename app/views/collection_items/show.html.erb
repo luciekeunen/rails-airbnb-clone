@@ -40,9 +40,7 @@
         </div>
       <div class="darc stats-section">
             <div class="darc-content">
-              <% if @collection_item.profile.photo %>
-                <%= cl_image_tag @collection_item.profile.photo, class: "owner_picture" %>
-              <% end %>
+                <%= cl_image_tag "https://www.famousbirthdays.com/faces/chaplin-charlie-image.jpg", class: "owner_picture" %>
             <div class="list-inline" style="margin-top:10px">
                 <li>Owner :</li>
                 <li><%= @collection_item.profile.first_name %></li>
