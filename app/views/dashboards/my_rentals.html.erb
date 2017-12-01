@@ -2,6 +2,17 @@
 
 
 
-
-<h1>Dashboards#my_rentals</h1>
-<p>Find me in app/views/dashboards/my_rentals.html.erb</p>
+<div class="container">
+  <h1>My rentals</h1>
+  <% if @rentals.empty? %>
+    <h6>You didn't make any book reservation yet :)</h6>
+    <%= link_to root_path do %>
+      <button type="button" class="btn btn-primary">Search for a book</button>
+    <% end %>
+  <% else %>
+    <h6>Here are your reservations</h6>
+    <% @rentals.each do |rental| %>
+      <%= render 'pending_request', reservation: rental %>
+    <% end %>
+  <% end %>
+</div>
