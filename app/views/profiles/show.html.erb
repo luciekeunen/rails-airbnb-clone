@@ -1,20 +1,21 @@
 <div class="wrapper">
-  <div class="container">
-
-    <div class="card card-small">
-      <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= profile_image(@profile, 'person.png') %>'); background-size: cover">
-      </div>
-      <div class="card-bottom">
-        <p>Owner name : <%= @profile.first_name %></p>
-        <p>Owner city : <%= @profile.city %></p>
-        <p>Owner description : <%= @profile.description %></p>
-      </div>
-    </div>
-
     <div class="row">
+      <div class="col-xs-4">
+        <h2 class="text-center">My profile</h2>
+        <div class="card card-small">
+          <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= profile_image(@profile, 'person.png') %>'); background-size: cover">
+          </div>
+          <div class="card-bottom">
+            <p><strong>Name</strong> : <%= @profile.first_name %></p>
+            <p><strong>City</strong> : <%= @profile.city %></p>
+            <p><strong>Description</strong> : <%= @profile.description %></p>
+          </div>
+        </div>
+      </div>
+  <div class="container">
       <h2 class="text-center">Books</h2>
       <% @profile.collection_items.each do |collection_item| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-xs-6 col-sm-6 col-md-4">
           <%= link_to collection_item_path(collection_item) do %>
             <div class="card card-small">
               <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= image_default(collection_item.book, 'book.png')%>'); background-size: cover">
