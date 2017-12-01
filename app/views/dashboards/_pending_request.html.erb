@@ -1,0 +1,24 @@
+<div class="message">
+  <%= image_tag 'book.png' %>
+  <div class="message-name">
+    <h3><%= reservation.profile.first_name %></h3>
+    <p><%= reservation.created_at %></p>
+  </div>
+  <div class="message-body">
+    <p>I'd like to rent your book <strong><%= reservation.collection_item.book.title %></strong></p>
+    <p>
+      <p>From <%= reservation.start_day %> to <%= reservation.end_day %></p>
+    </p>
+  </div>
+  <div class="message-status">
+    <% if reservation.status == "pending" %>
+      <%= link_to "Accept", reservation_accept_path(reservation, "true"), class: "btn btn-success" %>
+      <%= link_to "Decline", reservation_accept_path(reservation, "false"), class: "btn btn-danger" %>
+    <% elsif reservation.status == "accepted" %>
+      <p class="status accepted">Accepted</p>
+    <% else %>
+      <p class="status declined">Declined</p>
+    <% end %>
+    <p class="price"><%= reservation.final_price %> €</p>
+  </div>
+</div>
