@@ -1,6 +1,4 @@
 class ReservationsController < ApplicationController
-  # def new
-  # end
 
   def create
     authenticate_user!
@@ -24,14 +22,6 @@ class ReservationsController < ApplicationController
     end
   end
 
-  # def edit
-
-  # end
-
-  # def update
-  #   fail
-  # end
-
   def accept
     reservation = Reservation.find(params[:id])
     if params[:accept] == "true"
@@ -40,15 +30,6 @@ class ReservationsController < ApplicationController
       reservation.update(status: "aeclined")
     end
     redirect_to dashboards_dashboard_main_path
-  end
-
-  def index_borrowed
-  end
-
-  def index_lended
-  end
-
-  def show
   end
 
   def final_price

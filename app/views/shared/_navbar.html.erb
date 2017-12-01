@@ -56,7 +56,7 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li> <%= link_to "See books", collection_items_path , class: "navbar-wagon-item navbar-wagon-link" %></li>
-        <li><%= link_to "My bookings", reservations_index_borrowed_path , class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <li><%= link_to "My rentals", dashboards_my_books_path , class: "navbar-wagon-item navbar-wagon-link" %></li>
         <li><%= link_to "Add a book", new_collection_item_path , class: "navbar-wagon-item navbar-wagon-link" %></li>
         <li> <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
       </ul>
