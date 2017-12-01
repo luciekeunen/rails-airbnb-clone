@@ -1,7 +1,5 @@
 <% content_for :dashboard, render('shared/dashboard_navbar') %>
 
-
-
 <div class="container">
   <h1>My rentals</h1>
   <% if @rentals.empty? %>
@@ -12,7 +10,7 @@
   <% else %>
     <h6>Here are your reservations</h6>
     <% @rentals.each do |rental| %>
-      <%= render 'pending_request', reservation: rental %>
+      <%= render 'rental', reservation: rental %>
     <% end %>
   <% end %>
 </div>

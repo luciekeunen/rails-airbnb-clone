@@ -66,7 +66,7 @@ class CollectionItemsController < ApplicationController
 
   def update
     @collection_item = CollectionItem.update(collection_item_params)
-    redirect_to collection_item_path(@collection_item)
+    redirect_to dashboards_my_books_path
   end
 
   def destroy

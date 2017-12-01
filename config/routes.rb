@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   end
 
   get 'reservations/:id/:accept', to: 'reservations#accept', as: 'reservation_accept'
-  get 'reservations/index_borrowed', to: 'reservations#index_borrowed'
-  get 'reservations/index_lended', to: 'reservations#index_lended'
 
   get 'dashboards/dashboard_main'
   get 'dashboards/inbox'
