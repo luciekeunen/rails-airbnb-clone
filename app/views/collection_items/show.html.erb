@@ -1,64 +1,114 @@
-<div class="container">
-<div class="profile-card-show col-md-6 col-xs-12">
-  <header id="ze_book">
-    <div class="book">
-    <% if @collection_item.book.photo && @collection_item.book.photo.length > 5 %>
-      <%= cl_image_tag @collection_item.book.photo, class: "hoverZoomLink"%>
-    <% else %>
-      <%= image_tag "https://images.unsplash.com/photo-1502979932800-33d311b7ce56?auto=format&fit=crop&w=1650&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D", class: "hoverZoomLink"%>
-    <% end %>
-  <h4><%= @collection_item.book.title %></h4>
-  </div>
-  <div class="owner">
-    <%= link_to @collection_item.profile do %>
-      <ul class="list-inline">
-      <li>Owner : </li>
-      <% if @collection_item.profile.photo %>
-        <li><%= cl_image_tag @collection_item.profile.photo, class: "owner_picture" %></li>
-      <% end %>
-      <li><%= @collection_item.profile.first_name %></li>
-      <li><%= @collection_item.profile.last_name %></li>
-      </ul>
-    <% end %>
-  </div>
-  </header>
-  <div class="profile-bio">
-    <div class="synopsis">
-      <% if @collection_item.book.synopsis && @collection_item.book.synopsis.length > 5 %>
-        <h3 id="latest">Synopsis</h3>
-        <p><%= @collection_item.book.synopsis %></p>
-      <% end %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@collection_item.book.title</title>
+
+    <!-- Bootstrap + Fontawesome CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+    <div class="navbar-minimalist">
+      <img src="images/logo.png">
     </div>
-    <div class="review">
-    <h3 id="latest-review">Latest reviews</h3>
-    <ul class="list-inline reviews">
-      <% @collection_item.reviews.each do |review| %>
-        <li style="margin: 10px">
-          <%= review.content %>
-          <% review.rating.to_i.times do %>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <% end %>
-          <% (5 - review.rating.to_i).times do %>
-          <i class="fa fa-star" style="color: lightgray" aria-hidden="true"></i>
-          <% end %>
-          </li>
-        <br>
-      <% end %>
-    </ul>
-  <div class="add text-center">
-    <%= link_to "Add a review", new_collection_item_review_path(@collection_item), class: "btn btn-primary" %>
-  </div>
-  </div>
-  </div>
-    <div class="date">
-     <%= simple_form_for [@collection_item, @reservation], class: "col-xs-6" do |f| %>
-       <p>Start <%= f.date_field :start_day, label: "Start" %></p>
-       <p>End <%= f.date_field :end_day, label: "End" %></p>
-     <%= f.button :submit %>
-      <% end %>
-  </div>
 
-  <!-- some social links to show off -->
-</div>
-</div>
+        <div class="container text-center">
+          <div class="grid">
+          <div class="darc main-section">
+          <div class="darc main">
+            <div class="darc-content">
+              <% if @collection_item.book.photo && @collection_item.book.photo.length > 5 %>
+                <%= cl_image_tag @collection_item.book.photo, class: "hoverZoomLink"%>
+              <% else %>
+                <%= image_tag "https://images.unsplash.com/photo-1502979932800-33d311b7ce56?auto=format&fit=crop&w=1650&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D", class: "hoverZoomLink"%>
+              <% end %>
+              <h2><%= @collection_item.book.title %></h2>
+              <p><%= @collection_item.book.author %></p>
 
+              <%= simple_form_for [@collection_item, @reservation], class: "col-xs-6" do |f| %>
+                <p>Start <%= f.date_field :start_day, label: "Start" %></p>
+                <p>End <%= f.date_field :end_day, label: "End" %></p>
+              <%= f.button :submit, class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <div class="darc stats-section">
+            <div class="darc-content">
+              <% if @collection_item.profile.photo %>
+                <%= cl_image_tag @collection_item.profile.photo, class: "owner_picture" %>
+              <% end %>
+            <div class="list-inline" style="margin-top:10px">
+                <li>Owner :</li>
+                <li><%= @collection_item.profile.first_name %></li>
+                <li><%= @collection_item.profile.last_name %></li>
+
+                <%= link_to "More about this profile ?", @collection_item.profile, class: "btn btn-primary", id: "more" %>
+
+            </div>
+            </div>
+          </div>
+        <div class="darc stats-section">
+            <div class="darc-content">
+                  <ul class="list-inline reviews" style="max-height: 120px; overflow-y: scroll;">
+                    <% if @collection_item.reviews.size > 0 %>
+                      <% @collection_item.reviews.each do |review| %>
+                        <li style="margin: 10px">
+                          <%= review.content %>
+                          <% review.rating.to_i.times do %>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <% end %>
+                          <% (5 - review.rating.to_i).times do %>
+                          <i class="fa fa-star" style="color: lightgray" aria-hidden="true"></i>
+                          <% end %>
+                          </li>
+                        <br>
+                      <% end %>
+                    <% else %>
+                      <li class="text-justify">Sorry, no review yet !</li>
+                    <% end %>
+                  </ul>
+            <div class="add text-center">
+              <%= link_to "Add a review", new_collection_item_review_path(@collection_item), class: "btn btn-primary" %>
+            </div>
+            </div>
+        </div>
+        <% if @collection_item.book.synopsis && @collection_item.book.synopsis.length > 5 %>
+          <div class="info-section">
+            <div class="darc">
+              <div class="darc-content">
+                <h3>More about this Book</h3>
+                <p class="text-justify" style="max-height: 120px; overflow-y: scroll;">
+                  <%= @collection_item.book.synopsis %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="info-section">
+            <div class="darc">
+              <div class="darc-content">
+                <h3>More about this Book</h3>
+                <p class="text-justify">
+                 Sorry, no synopsis yet for this book !
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      </div>
+      </div>
+        </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
