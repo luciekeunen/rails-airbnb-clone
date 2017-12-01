@@ -123,11 +123,7 @@ puts "5"
 puts "Creating collection_item with 2 reservations each..."
 
 15.times do
-<<<<<<< HEAD
-  collection_item = CollectionItem.new(price_per_day: rand(0..30))
-=======
   collection_item = CollectionItem.new(price_per_day: rand(1..30))
->>>>>>> 2da56f0b7e94519d53d2267cdd23d26f95241fc8
   collection_item.book = Book.all.sample
   collection_item.profile = Profile.all.sample
   collection_item.save!
