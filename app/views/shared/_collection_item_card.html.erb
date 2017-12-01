@@ -1,14 +1,16 @@
-<div class="card card-small">
-<div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= image_default(collection_item.book, 'book.png')%>'); background-size: cover">
+<div class="carte carte-small">
+<div class="carte-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= image_default(collection_item.book, 'book.png')%>'); background-size: cover">
   </div>
-  <div class="card-bottom">
-    <p>Title : <%= collection_item.book.title %></p>
-    <p>Author : <%= collection_item.book.author %></p>
-    <p>Genre : <%= collection_item.book.genre %></p>
-    <p>Average rating : <%= collection_item.book.average_rating %></p>
-    <p>Owner (à remplacer par son avatar): <%= collection_item.profile.first_name %></p>
-    <p>Price per day: <%= collection_item.price_per_day %> </p>
-    <p>Edition : <%= collection_item.edition %></p>
-    <p>Quality : <%= collection_item.quality %></p>
+  <div class="carte-bottom">
+    <h6><strong><%= collection_item.book.title %></strong></h6>
+    <p class="author">by <%= collection_item.book.author %></p>
+    <p class="genre"><%= collection_item.book.genre %></p>
+    <hr class="less-margin">
+    <p><i class="fa fa-user" aria-hidden="true"></i> <%= collection_item.profile.first_name %></p>
+    <p><%= collection_item.price_per_day.to_f / 100 %> € <span>/day</span></p>
+    <p><%= collection_item.edition %></p>
+    <% if collection_item.quality %>
+      <p>Quality : <%= collection_item.quality %></p>
+    <% end %>
   </div>
 </div>

@@ -1,4 +1,4 @@
-.card {
+.carte {
   background-size: cover !important;
   background-position: center;
   position: relative;
@@ -8,26 +8,52 @@
   h3 {
     padding-left: 20px;
   }
-  &:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    text-decoration: none;
-  }
 }
 
-.card-small {
-  height: 500px;
+.carte:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-.card-big {
+.carte-small {
+  height: 450px;
+}
+
+.carte-big {
   height: 600px;
 }
 
-.card-top {
+.carte-top {
   height: 50%;
 }
 
-.card-bottom {
+.carte-bottom {
   height: 50%;
   padding: 20px;
+  margin-bottom: 0px;
+  span {
+    color: $light-gray;
+  }
 }
 
+a{
+  color: $gray;
+}
+
+a:hover {
+  text-decoration: none;
+  color: $gray;
+}
+
+.author {
+  color: $light-gray;
+  margin: 0px;
+}
+
+.less-margin {
+  margin: 10px;
+  color: $light-gray;
+}
+
+.fa-user {
+  padding-right: 10px;
+}
