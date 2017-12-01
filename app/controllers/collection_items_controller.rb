@@ -3,7 +3,15 @@ class CollectionItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
 
   def index
-    @profiles = Profile.near(params[:city], 10)
+    # @profiles = Profile.near(params[:city], 10)
+    if params[:city].nil?
+      @profiles = Profile.all.where.not(latitude: nil, longitude: nil)
+    elsif (Profile.near(params[:city], 10)).empty? && (params[:city].size > 1)
+      flash[:notice] = "We didn't find any book around this city. Take a look at books elsewhere!"
+      @profiles = Profile.all.where.not(latitude: nil, longitude: nil)
+    else
+      @profiles = Profile.near(params[:city], 10).where.not(latitude: nil, longitude: nil)
+    end
     @markers = Gmaps4rails.build_markers(@profiles) do |profile, marker|
       marker.lat profile.latitude
       marker.lng profile.longitude
