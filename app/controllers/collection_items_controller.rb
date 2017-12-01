@@ -36,6 +36,7 @@ class CollectionItemsController < ApplicationController
   end
 
   def create
+    params[:collection_item][:price_per_day] = params[:collection_item][:price_per_day].to_f * 100
     @collection_item = CollectionItem.new(collection_item_params)
     if Book.find_by(title: params["collection_item"]["title"])
       @book = Book.find_by(title: params["collection_item"]["title"])

@@ -10,6 +10,7 @@ const drawResponseList = (data) => {
   const results = document.querySelector('#results');
   results.style.top = bounding.bottom + "px";
   results.style.width = bounding.width + "px";
+  results.style.left = bounding.left + "px";
   results.innerHTML = "";
   let result_id = 0;
   data.items.slice(0, 5).forEach((item) => {
