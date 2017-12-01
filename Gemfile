@@ -21,7 +21,6 @@ gem 'carrierwave', '~> 0.11.2'
 gem 'devise-bootstrapped'
 gem 'faker'
 gem 'omniauth-facebook'
-gem 'mailboxer'
 
 
 gem 'country_select'
