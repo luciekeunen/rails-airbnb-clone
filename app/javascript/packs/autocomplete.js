@@ -1,7 +1,3 @@
-// GOOGLE_API_SERVER_KEY
-
-// https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyARQs4JmuMEWqPwkejlRf5Ir9SAwRR5mgM
-// TODO: Autocomplete the input with AJAX calls.
 const input = document.querySelector('#collection_item_fake_title');
 
 const drawResponseList = (data) => {
