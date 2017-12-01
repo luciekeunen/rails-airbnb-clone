@@ -15,17 +15,14 @@
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div id="reservation-recap">
         <h3>Reservation's recap :</h3>
-        <p>Status : <%= @reservation.status %>. The owner of the book has to confirm your reservation first :) </p>
-        <p>Price : <%= @reservation.final_price.to_f / 100 %></p>
+        <p><strong>Status : <%= @reservation.status %> </strong>- The owner of the book has to confirm your reservation first :) </p>
+        <p>Price : <%= @reservation.final_price.to_f / 100 %> €</p>
         <p>Rented from <%= @reservation.start_day %> to <%= @reservation.end_day %></p>
         <p>Owner : <%= @reservation.collection_item.profile.first_name %></p>
-        <%= link_to "Go to my reservations", dashboards_my_rentals_path %>
-        <%= link_to "Add a review", new_collection_item_review_path %>
+        <%= link_to dashboards_my_rentals_path do %>
+          <div class="btn btn-primary">Go to my reservations</div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
