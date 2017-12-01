@@ -13,7 +13,7 @@ puts "Creating books..."
 PHOTO = ["book1","book2","book3","book4","book5","book6","book7","book8","book9","book10","book11"]
 
 20.times do
-  Book.create!(title: Faker::Book.title, author: Faker::Book.author, genre: Faker::Book.genre, photo: PHOTO.sample)
+  Book.create!(title: Faker::Book.title, author: Faker::Book.author, genre: Faker::Book.genre, photo: PHOTO.sample, synopsis: "Once upon a time, there was a little man named Clement. He was not very smart, and he was not very tall neither. You might think he was a little stupid too. Guess what ? You're right.")
 end
 
 puts "Creating users and their profile..."
