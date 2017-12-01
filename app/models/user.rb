@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def name
-    "User #{id}"
+    "User #{first_name}"
   end
 
   def mailboxer_email(object)
