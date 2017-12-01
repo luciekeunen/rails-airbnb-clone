@@ -14,23 +14,23 @@
   padding-left: 10px;
   min-width: 100px;
 }
-.message-name h3 {
-  font-size: 13px;
+.message-name h4 {
+  // font-size: 13px;
   margin-bottom: 0px;
 }
 .message-name p {
-  font-size: 13px;
+  // font-size: 13px;
   font-weight: lighter;
   opacity: 0.6;
   margin-top: 5px;
 }
 .message-body {
   padding-left: 10px;
-  font-size: 13px;
+  // font-size: 13px;
   color: rgba(0,0,0,0.7);
 }
 .message-body {
-  padding-left: 20px;
+  padding-left: 30px;
   color: rgba(0,0,0,0.4);
 }
 .message-body strong{
@@ -39,9 +39,10 @@
 }
 .message-body p {
   margin: 6px 0;
+  font-size: 15px;
 }
 .message-status {
-  font-size: 14px;
+  // font-size: 14px;
   font-weight: bold;
 }
 .status.accepted {
@@ -51,5 +52,9 @@
   color: red;
 }
 .status.pending {
-  color: lightgrey;
+  color: $light-gray;
+}
+
+.price {
+  padding-top: 10px;
 }

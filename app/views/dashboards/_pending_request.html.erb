@@ -1,7 +1,7 @@
 <div class="message">
   <%= image_tag 'book.png' %>
   <div class="message-name">
-    <h3><%= reservation.profile.first_name %></h3>
+    <h4><%= reservation.profile.first_name %></h4>
     <p><%= reservation.created_at %></p>
   </div>
   <div class="message-body">
@@ -19,6 +19,6 @@
     <% else %>
       <p class="status declined">Declined</p>
     <% end %>
-    <p class="price"><%= reservation.final_price %> €</p>
+    <p class="price text-center"><%= reservation.final_price %> €</p>
   </div>
 </div>
