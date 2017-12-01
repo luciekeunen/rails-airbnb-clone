@@ -7,5 +7,5 @@ class CollectionItem < ApplicationRecord
 
   validates :price_per_day, presence: :true, numericality: { only_integer: true }
 
-  attr_accessor :title, :author, :synopsis, :photo, :genre
+  attr_accessor :title, :author, :synopsis, :photo, :genre, :fake_title
 end

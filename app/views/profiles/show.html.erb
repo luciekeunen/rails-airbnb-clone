@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class="card card-small">
-      <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= image_default(@profile, 'person.png') %>'); background-size: cover">
+      <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= profile_image(@profile, 'person.png') %>'); background-size: cover">
       </div>
       <div class="card-bottom">
         <p>Owner name : <%= @profile.first_name %></p>
