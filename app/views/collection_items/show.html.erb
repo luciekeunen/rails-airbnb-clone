@@ -1,4 +1,5 @@
-<div class="profile-card-show">
+<div class="container">
+<div class="profile-card-show col-md-6 col-xs-12">
   <header id="ze_book">
     <div class="book">
     <% if @collection_item.book.photo && @collection_item.book.photo.length > 5 %>
@@ -22,12 +23,15 @@
   </div>
   </header>
   <div class="profile-bio">
-    <% if @collection_item.book.synopsis && @collection_item.book.synopsis.length > 5 %>
-      <h3 id="latest">Synopsis</h3>
-      <p><%= @collection_item.book.synopsis %></p>
-    <% end %>
-    <h3 id="latest">Latest reviews</h3>
-    <ul class="list-inline">
+    <div class="synopsis">
+      <% if @collection_item.book.synopsis && @collection_item.book.synopsis.length > 5 %>
+        <h3 id="latest">Synopsis</h3>
+        <p><%= @collection_item.book.synopsis %></p>
+      <% end %>
+    </div>
+    <div class="review">
+    <h3 id="latest-review">Latest reviews</h3>
+    <ul class="list-inline reviews">
       <% @collection_item.reviews.each do |review| %>
         <li style="margin: 10px">
           <%= review.content %>
@@ -41,17 +45,20 @@
         <br>
       <% end %>
     </ul>
-  <div class="add">
+  <div class="add text-center">
     <%= link_to "Add a review", new_collection_item_review_path(@collection_item), class: "btn btn-primary" %>
   </div>
-  <div class="date">
-     <%= simple_form_for [@collection_item, @reservation] do |f| %>
+  </div>
+  </div>
+    <div class="date">
+     <%= simple_form_for [@collection_item, @reservation], class: "col-xs-6" do |f| %>
        <p>Start <%= f.date_field :start_day, label: "Start" %></p>
        <p>End <%= f.date_field :end_day, label: "End" %></p>
      <%= f.button :submit %>
+      <% end %>
   </div>
-  </div>
-  <% end %>
 
   <!-- some social links to show off -->
 </div>
+</div>
+
