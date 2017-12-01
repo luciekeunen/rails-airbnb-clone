@@ -5,31 +5,14 @@
   <button id="All_reservations" type="button" class="btn btn-default">View all reservations</button>
   <button id="Add_book" type="button" class="btn btn-default">Add a book</button>
   <h3>Reservation requests on my books</h3>
-  <h6>Please accept or refuse pending requests</h6>
-  <% @reservations.each do |reservation| %>
-    <div class="message">
-      <%= image_tag 'book.png' %>
-      <div class="message-name">
-        <h3><%= reservation.profile.first_name %></h3>
-        <p><%= reservation.created_at %></p>
-      </div>
-      <div class="message-body">
-        <p>I'd like to rent your book <strong><%= reservation.collection_item.book.title %></strong></p>
-        <p>
-          <p>From <%= reservation.start_day %> to <%= reservation.end_day %></p>
-        </p>
-      </div>
-      <div class="message-status">
-        <% if reservation.status == "pending" %>
-          <%= link_to "Accept", reservation_accept_path(reservation, "true"), class: "btn btn-success" %>
-          <%= link_to "Decline", reservation_accept_path(reservation, "false"), class: "btn btn-danger" %>
-        <% elsif reservation.status == "accepted" %>
-          <p class="status accepted">Accepted</p>
-        <% else %>
-          <p class="status declined">Declined</p>
-        <% end %>
-        <p class="price"><%= reservation.final_price %> €</p>
-      </div>
-    </div>
+
+
+  <% if @reservations.nil? %>
+    <h6>You don't have any reservation request yet</h6>
+  <% else %>
+    <h6>Please accept or refuse pending requests</h6>
+    <% @reservations.each do |reservation| %>
+      <%= render 'pending_request', reservation: reservation %>
+    <% end %>
   <% end %>
 </div>
