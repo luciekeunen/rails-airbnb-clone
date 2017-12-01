@@ -39,9 +39,9 @@ class ReservationsController < ApplicationController
   def accept
     reservation = Reservation.find(params[:id])
     if params[:accept] == "true"
-      reservation.update(status: "Accepted")
+      reservation.update(status: "accepted")
     else
-      reservation.update(status: "Refused")
+      reservation.update(status: "aeclined")
     end
     redirect_to dashboards_dashboard_main_path
   end
