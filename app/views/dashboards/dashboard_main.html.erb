@@ -2,8 +2,13 @@
 
 <div class="container">
   <h1>Dashboard</h1>
-  <button id="All_reservations" type="button" class="btn-form">View all reservations</button>
-  <button id="Add_book" type="button" class="btn-form">Add a book</button>
+
+  <%= link_to dashboards_my_rentals_path do %>
+    <button id="All_reservations" type="button" class="btn btn-primary">View all reservations</button>
+  <% end %>
+  <%= link_to new_collection_item_path do %>
+    <button id="Add_book" type="button" class="btn btn-primary">Add a book</button>
+  <% end %>
   <h3>Reservation requests on my books</h3>
 
 
