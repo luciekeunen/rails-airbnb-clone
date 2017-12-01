@@ -4,4 +4,5 @@ class Reservation < ApplicationRecord
 
   validates :start_day, presence: true
   validates :end_day, presence: true
+  validates :final_price, numericality: { greater_than_or_equal_to: 0 }
 end

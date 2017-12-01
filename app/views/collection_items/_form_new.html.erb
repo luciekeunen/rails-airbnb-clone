@@ -10,7 +10,7 @@
       <%= f.input :author, :as => :hidden %>
       <%= f.input :photo, :as => :hidden %>
       <%= f.input :genre, :as => :hidden %>
-      <%= f.input :price_per_day %>
+      <%= f.input :price_per_day, input_html: { min: 0 } %>
       <%= f.input :edition, collection: editions, as: :select %>
       <%= f.input :quality, collection: qualities, as: :select %>
       <%= f.input :description %>

@@ -11,7 +11,11 @@ class ReservationsController < ApplicationController
       @reservation.status = 'pending'
       @reservation.collection_item_id = params["collection_item_id"]
       price_per_day = CollectionItem.find(params["collection_item_id"]).price_per_day
-      @reservation.final_price = calculate_final_price(@reservation.start_day, @reservation.end_day, price_per_day)
+      if @reservation.start_day != nil && @reservation.end_day != nil
+        @reservation.final_price = calculate_final_price(@reservation.start_day, @reservation.end_day, price_per_day)
+      else
+        flash[:alert] = 'You did not fill the calendar !'
+      end
       unless @reservation.save
         redirect_to collection_item_path(params[:collection_item_id])
       end
@@ -63,6 +67,6 @@ class ReservationsController < ApplicationController
   def calculate_final_price(start_day, end_day, price_per_day)
     price_per_day = 0 if price_per_day.nil?
     days = end_day - start_day
-    final_price = days * price_per_day
+    final_price = (days * price_per_day)/100
   end
 end
