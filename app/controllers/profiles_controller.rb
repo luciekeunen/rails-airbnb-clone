@@ -1,9 +1,10 @@
 class ProfilesController < ApplicationController
 
-  before_action :set_profile, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy ]
   before_action :authenticate_user!
 
   def show
+    redirect_to new_profile_path unless @profile
   end
 
   def new
@@ -44,6 +45,6 @@ class ProfilesController < ApplicationController
   end
 
   def set_profile
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find_by(user_id: params[:id])
   end
 end
