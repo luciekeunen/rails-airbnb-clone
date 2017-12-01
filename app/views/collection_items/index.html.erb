@@ -2,13 +2,16 @@
   <div class="search-results">
     <div class="container-fluid">
       <div class="row">
-        <% @collection_items.each do |collection_item| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-
-            <% if collection_item && collection_item.book %>
+        <% if @collection_items.empty? %>
+          <div class="col-xs-12">
+            <p>Pas de livre dans ta ville!</p>
+          </div>
+        <% else %>
+          <% @collection_items.each do |collection_item| %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
               <%= link_to collection_item_path(collection_item) do %>
                 <div class="card card-small">
-                  <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("<%= image_default(collection_item.book, 'book.png')%>"); background-size: cover">
+                  <div class="card-top" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= image_default(collection_item.book, 'book.png')%>'); background-size: cover">
                   </div>
                   <div class="card-bottom">
                     <p>Title : <%= collection_item.book.title %></p>
@@ -20,14 +23,8 @@
                   </div>
                 </div>
               <% end %>
-
-            <% else %>
-
-            <% fail %>
-              <p>Pas de livre dans ta ville!</p>
-
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -51,8 +48,3 @@
   <% end %>
 <% end %>
 </div>
-
-
-<!-- Quand Clement aura fini, remplacer les cards par ce partial :
-<%= render 'shared/collection_item_card', collection_item: @collection_items.first %>
--->
